@@ -1,6 +1,6 @@
-import data from '../../data/products.json'
+import data from '../../data/productos.json'
 
-const PedirProductos = () => {
+export const PedirProductos = () => {
     return new Promise((resolve, reject) => {
         resolve(data)
 
@@ -8,4 +8,18 @@ const PedirProductos = () => {
     })
   }
 
-export default PedirProductos;
+  export const pedirItemPorId = (id) => {
+    return new Promise((resolve, reject) => {
+
+        const item = data.find((el) => el.id === id)
+        
+        if (item) {
+          resolve(item)
+        } else {
+          reject({
+            error: 'No se encontro el producto'
+          })
+        }
+    })
+  }
+
